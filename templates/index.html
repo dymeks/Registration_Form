@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Registration form</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='../static/css/style.css')}}">
+</head>
+<body>
+	<h1>Form Validation</h1>
+	<div class="invalid_submission">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+			<div class=flashes>
+				{% for category, message in messages %}
+				<p class="{{category}}"> {{message}}</p>
+				{% endfor %}
+			</div>
+			{% endif %}
+		{% endwith %}	
+	</div>
+	<form action="/user" method="post">
+		<label>First Name: <input type="text" name="first_name"></label>
+		<label>First Name: <input type="text" name="last_name"></label>
+		<label>Email: <input type="email" name="email" required></label>
+		<label>Password: <input type="password" name="password"></label>
+		<label>Confirm Password: <input type="password" name="confirm_password"></label>
+		<label><input type="date" name="date"></label>
+		<input type="submit" name="user" value="Create User">
+	</form>
+</body>
+</html>
